@@ -1,4 +1,5 @@
 const chalk = require("chalk");
+const { setInterval } = require("node:timers");
 const w3func = require('../../web3');
 const wait = require('node:timers/promises').setTimeout;
 
@@ -8,7 +9,7 @@ module.exports = {
     async execute(client) {
         console.log(chalk.green(`${client.user.tag} is online!`));
         
-        var arrayChain = [ 'bnb', 'skale' ];
+        var arrayChain = [ 'bnb', 'skale', 'meter' ];
 
         var partnersCount = {
             bnb: {
@@ -18,14 +19,20 @@ module.exports = {
             skale: {
                 currentPartner: 0,
                 newCurrentPartner: 0
+            },
+            meter: {
+                currentPartner: 0,
+                newCurrentPartner: 0
             }
         }
 
+        // storing base values for current partners
         for (let i = 0; i < arrayChain.length; i++) {
             partnersCount[arrayChain[i]].currentPartner = await w3func.getCurrentPartners(arrayChain[i]);
             console.log(`[logdata][${arrayChain[i]}] Current partners in ${arrayChain[i]} : ${partnersCount[arrayChain[i]].currentPartner}`);
         }
         
+        // check if there is new treasury
         async function checkForNewPartners(chain) {
             partnersCount[chain].newCurrentPartner = await w3func.getCurrentPartners(chain);
 
@@ -46,10 +53,34 @@ module.exports = {
             }
         }
 
+        // check multiplier values for treasury on each chain
+        async function getOngoingPartners(client) {
+            try {
+                await w3func.getAllPartner('bnb', client);
+                await w3func.getAllPartner('oec', client);
+                await w3func.getAllPartner('heco', client);
+                await w3func.getAllPartner('skale', client);
+                await w3func.getAllPartner('poly', client);
+                await w3func.getAllPartner('avax', client);
+                await w3func.getAllPartner('aurora', client);
+                await w3func.getAllPartner('csc', client);
+                await w3func.getAllPartner('meter', client);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        // 1800000 = 30mins
+        setInterval(() => {
+            getOngoingPartners(client);
+        }, 1800000);
+
+        // loop the function to check every 15s
         while (true) {
-            await wait(15000);
+            await wait(10000);
             await checkForNewPartners('bnb');
             await checkForNewPartners('skale');
+            await checkForNewPartners('meter');
         }
     }
 }

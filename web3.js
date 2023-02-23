@@ -10,7 +10,7 @@ const ogRoleId = "1045457186047922247";
 var contractAddress = {
     bnb: {
         treasury: '0x812Fa2f7d89e5d837450702bd51120920dccaA99',
-        treasuryChannel: '1034872376233570354'
+        treasuryChannel: '1034872376233570354' // test channel
     },
     oec: {
         treasury: '0xcBEfF02841370997054AdfF624dC490C8cB20406',
