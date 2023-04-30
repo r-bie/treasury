@@ -10,7 +10,7 @@ const ogRoleId = "1045457186047922247";
 var contractAddress = {
     bnb: {
         treasury: '0x812Fa2f7d89e5d837450702bd51120920dccaA99',
-        treasuryChannel: '1034872376233570354' // test channel
+        treasuryChannel: '1034872376233570354'
     },
     oec: {
         treasury: '0xcBEfF02841370997054AdfF624dC490C8cB20406',
@@ -50,7 +50,7 @@ var nodes = {
     bnb: 'https://rpc.ankr.com/bsc',
     oec: 'https://exchainrpc.okex.org',
     heco: 'https://http-mainnet.hecochain.com',
-    skale: 'https://mainnet.skalenodes.com/v1/affectionate-immediate-pollux',
+    skale: 'https://skale-swu-wl-node02.stakewith.us:10200/',
     poly: 'https://polygon-rpc.com/',
     avax: 'https://api.avax.network/ext/bc/C/rpc',
     aurora: 'https://mainnet.aurora.dev',
