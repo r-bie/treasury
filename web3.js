@@ -157,7 +157,7 @@ async function getCurrentPartners(chain) {
     const web3 = new Web3(new Web3.providers.HttpProvider(nodes[chain]));
 
     const contract = new web3.eth.Contract(treasuryABI, contractAddress[chain].treasury);
-    const getAmountOfActiveProjects = await contract.methods.getAmountOfActiveProjects().call({ from: USER_ADDRESS });
+    const getAmountOfActiveProjects = await contract.methods.getAmountOfActiveProjects().call();
     x = getAmountOfActiveProjects;
 
     return x;
