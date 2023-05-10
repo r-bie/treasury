@@ -80,7 +80,7 @@ module.exports = {
             await wait(10000);
             await checkForNewPartners('bnb');
             await checkForNewPartners('skale');
-            // await checkForNewPartners('meter'); json rpc error
+            await checkForNewPartners('meter');
         }
     }
 }
