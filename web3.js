@@ -4,8 +4,9 @@ const { EmbedBuilder } = require('discord.js');
 
 const treasuryABI = require('./abis/treasury.json');
 const USER_ADDRESS = "0xA8e48AfbD74f58d16290A5253571430665A3f78c";
-const roleId = "1034870591284596826";
+const roleId = "1034870591284596826"; 
 const ogRoleId = "1045457186047922247";
+const snipersRoleId = "1025905075924774922";
 
 var contractAddress = {
     bnb: {
@@ -163,4 +164,4 @@ async function getCurrentPartners(chain) {
     return x;
 }
 
-module.exports = { getCurrentPartners, getLatestPartner, getAllPartner, roleId, ogRoleId }
+module.exports = { getCurrentPartners, getLatestPartner, getAllPartner, roleId, ogRoleId, snipersRoleId }

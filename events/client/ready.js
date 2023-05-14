@@ -8,8 +8,8 @@ module.exports = {
     once: true,
     async execute(client) {
         console.log(chalk.green(`${client.user.tag} is online!`));
-        
-        var arrayChain = [ 'bnb', 'skale', 'meter' ];
+
+        var arrayChain = ['bnb', 'skale', 'meter'];
 
         var partnersCount = {
             bnb: {
@@ -31,7 +31,7 @@ module.exports = {
             partnersCount[arrayChain[i]].currentPartner = await w3func.getCurrentPartners(arrayChain[i]);
             console.log(`[logdata][${arrayChain[i]}] Current partners in ${arrayChain[i]} : ${partnersCount[arrayChain[i]].currentPartner}`);
         }
-        
+
         // check if there is new treasury
         async function checkForNewPartners(chain) {
             partnersCount[chain].newCurrentPartner = await w3func.getCurrentPartners(chain);
@@ -43,7 +43,7 @@ module.exports = {
 
                 client.channels.fetch('1050565824987013120')
                     .then(channel => {
-                        channel.send(`<@&${w3func.ogRoleId}>`);
+                        channel.send(`<@&${w3func.ogRoleId}> <@&${w3func.snipersRoleId}>`);
                     });
 
                 await w3func.getLatestPartner(chain, client);
@@ -75,7 +75,7 @@ module.exports = {
             getOngoingPartners(client);
         }, 1800000);
 
-        // loop the function to check every 15s
+        // loop the function to check every 10s
         while (true) {
             await wait(10000);
             await checkForNewPartners('bnb');
