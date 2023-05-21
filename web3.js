@@ -4,7 +4,7 @@ const { EmbedBuilder } = require('discord.js');
 
 const treasuryABI = require('./abis/treasury.json');
 const USER_ADDRESS = "0xA8e48AfbD74f58d16290A5253571430665A3f78c";
-const roleId = "1034870591284596826"; 
+const roleId = "1034870591284596826";
 const ogRoleId = "1045457186047922247";
 const snipersRoleId = "1025905075924774922";
 
@@ -80,9 +80,8 @@ async function getAllPartner(chain, client) {
         const getRemainingPartnerTokenSupply = await contract.methods.getRemainingPartnerTokenSupply(projectArray[i]).call({ from: USER_ADDRESS });
 
         // storing data from project data array
-        var partnerArray = getProjectData; // project data array
-        var tokenDesc = partnerArray[1];
-        var getTokenName = tokenDesc.split(" ")[0];
+        temp = getProjectData[0].split("/");
+        getTokenName = temp[temp.length - 1].slice(0, -4);
         var multiplier = parseFloat(getProjectMultiplier * 0.000000000000000001).toFixed(3);
         var claimable = parseFloat(getRemainingPartnerTokenSupply * 0.000000000000000001).toFixed(3);
 
