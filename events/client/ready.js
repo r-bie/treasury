@@ -43,7 +43,7 @@ module.exports = {
 
                 client.channels.fetch('1050565824987013120')
                     .then(channel => {
-                        channel.send(`<@&${w3func.ogRoleId}> <@&${w3func.snipersRoleId}>`);
+                        channel.send(`<@&${w3func.ogRoleId}>`);
                     });
 
                 await w3func.getLatestPartner(chain, client);
