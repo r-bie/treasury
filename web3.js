@@ -44,6 +44,10 @@ var contractAddress = {
     meter: {
         treasury: '0xA6Dff69179fAB797bfd1eaEF292DC0401c7E5B85',
         treasuryChannel: '1073232511745929287'
+    },
+    cronos: {
+        treasury: '0x7a972E9dE934e4811509d8c4Ef3BA1cf60467481',
+        treasuryChannel: '1134497287838650418'
     }
 }
 
@@ -56,7 +60,8 @@ var nodes = {
     avax: 'https://api.avax.network/ext/bc/C/rpc',
     aurora: 'https://mainnet.aurora.dev',
     csc: 'https://rpc.coinex.net',
-    meter: 'https://rpc.meter.io/'
+    meter: 'https://rpc.meter.io/',
+    cronos: 'https://cronos.blockpi.network/v1/rpc/public'
 }
 
 async function getAllPartner(chain, client) {

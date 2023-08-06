@@ -9,7 +9,7 @@ module.exports = {
     async execute(client) {
         console.log(chalk.green(`${client.user.tag} is online!`));
 
-        var arrayChain = ['bnb', 'skale', 'meter'];
+        var arrayChain = ['bnb', 'skale', 'meter', 'cronos'];
 
         var partnersCount = {
             bnb: {
@@ -21,6 +21,10 @@ module.exports = {
                 newCurrentPartner: 0
             },
             meter: {
+                currentPartner: 0,
+                newCurrentPartner: 0
+            },
+            cronos: {
                 currentPartner: 0,
                 newCurrentPartner: 0
             }
@@ -65,12 +69,13 @@ module.exports = {
                 await w3func.getAllPartner('aurora', client);
                 await w3func.getAllPartner('csc', client);
                 await w3func.getAllPartner('meter', client);
+                await w3func.getAllPartner('cronos', client);
             } catch (error) {
                 console.log(error);
             }
         }
-
-        // 1800000 = 30mins
+        
+        // 1800000 = 30mins | 1000 = 1s
         setInterval(() => {
             getOngoingPartners(client);
         }, 1800000);
@@ -81,6 +86,7 @@ module.exports = {
             await checkForNewPartners('bnb');
             await checkForNewPartners('skale');
             await checkForNewPartners('meter');
+            await checkForNewPartners('cronos');
         }
     }
 }
